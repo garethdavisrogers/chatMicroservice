@@ -8,6 +8,9 @@ app.use(express.static("./client/public"));
 
 io.on("connection", (socket) => {
   console.log("connected to socket");
+  socket.on("new-message", () => {
+    console.log("new message sent");
+  });
   socket.on("disconnect", () => {
     console.log("user has left");
   });
