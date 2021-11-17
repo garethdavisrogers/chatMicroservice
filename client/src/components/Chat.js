@@ -26,7 +26,9 @@ const Chat = ({ socket, roomName, userName }) => {
   return (
     <div>
       <div id="chatbox">
-        {messageList.length > 0 && <Messages messageList={messageList} />}
+        {messageList.length > 0 && (
+          <Messages messageList={messageList} userName={userName} />
+        )}
       </div>
       <form>
         <input

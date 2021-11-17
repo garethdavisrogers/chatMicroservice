@@ -1,0 +1,19 @@
+.message-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-bubble {
+  max-width: 20vw;
+  border-radius: 5px;
+  color: white;
+}
+
+.user-chat-bubble {
+  background-color: blue;
+  align-self: left;
+}
+.other-chat-bubble {
+  background-color: gray;
+  align-self: right;
+}

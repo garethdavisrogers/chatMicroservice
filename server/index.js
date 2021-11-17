@@ -1,10 +1,11 @@
 const http = require("http");
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 const server = http.createServer(app);
 const cors = require("cors");
 const { Server } = require("socket.io");
+const createCluster = require("./cluster");
 app.use(express.static("./client/public"));
 const io = new Server(server, {
   cors: {
@@ -19,6 +20,7 @@ io.on("connection", (socket) => {
   socket.on("join-room", (data) => {
     socket.join(data);
     console.log(data);
+    createCluster(port);
   });
   socket.on("new-message", (data) => {
     console.log(data);
@@ -26,6 +28,7 @@ io.on("connection", (socket) => {
   });
   socket.on("disconnect", () => {
     console.log("user has left");
+    createCluster(port);
   });
 });
 
